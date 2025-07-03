@@ -1,0 +1,15 @@
+{
+  "name": "assessment",
+  "version": "1.0.0",
+  "description": "This is my online assessment test for a Company which is come for a campus placement",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^30.0.4"
+  }
+}
