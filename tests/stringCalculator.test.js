@@ -39,3 +39,32 @@ test("allow newline as a separator", () => {
   expect(add("1\n2,3")).toBe(6);
   expect(add("\n\n\n\n\n")).toBe(0);
 });
+
+test("custom delimiter ;", () => {
+  expect(add("//;\n1;2")).toBe(3);
+});
+
+test("custom delimiter |", () => {
+  expect(add("//|\n4|5|6")).toBe(15);
+});
+
+test("custom delimiter _", () => {
+  expect(add("//_\n1_2_3")).toBe(6);
+});
+
+test("custom delimiter :", () => {
+  expect(add("//:\n10:20:30")).toBe(60);
+});
+
+test("custom delimiter -", () => {
+  expect(add("//-\n5-5-5-5")).toBe(20);
+});
+
+test("for negative numbers throw error", () => {
+  expect(() => add("-5,10,-15")).toThrow("numbers is negative.Not allowed number -5,-15");
+});
+
+const bigInput = Array(1000).fill("1").join(",");
+test("for hanlde big large values", () => {
+  expect(add(bigInput)).toBe(1000);
+});
