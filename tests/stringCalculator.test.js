@@ -28,13 +28,6 @@ test("return sum of multiple values", () => {
   expect(add("1,2,3,4,5,6,7,8,9")).toBe(45);
 });
 
-test("return sum of big numbers", () => {
-  expect(add("123456,654321")).toBe(777777);
-  expect(add("987654321,123456789")).toBe(1111111110);
-  expect(add("500000,250000,250000")).toBe(1000000);
-  expect(add("111111,222222,333333")).toBe(666666);
-});
-
 test("allow newline as a separator", () => {
   expect(add("1\n2,3")).toBe(6);
   expect(add("\n\n\n\n\n")).toBe(0);
@@ -62,10 +55,17 @@ test("declare another use another character", () => {
 });
 
 test("for negative numbers throw error", () => {
-  expect(() => add("-5,10,-15")).toThrow("numbers is negative.Not allowed number -5,-15");
+  expect(() => add("-5,10,-15")).toThrow(
+    "numbers is negative.Not allowed number -5,-15"
+  );
 });
 
 const bigInput = Array(1000).fill("1").join(",");
 test("for hanlde big large values", () => {
   expect(add(bigInput)).toBe(1000);
+});
+
+test("ignores numbers greater than 1000", () => {
+  expect(add("2,1001")).toBe(2);
+  expect(add("1000,1001,2")).toBe(1002);
 });

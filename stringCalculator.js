@@ -32,7 +32,8 @@ function add(number) {
   const multipleValues = replaceNewLineSeparator
     .split(delimiter)
     .filter((number) => number !== "")
-    .map((number) => parseInt(number));
+    .map((number) => parseInt(number))
+    .filter((number)=> !isNaN(number) && number <= 1000);
 
   //this is for negative numbers
   const negatives = multipleValues.filter((num) => num < 0);
