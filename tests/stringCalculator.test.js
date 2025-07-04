@@ -85,3 +85,9 @@ test("supports multiple multi-character delimiters", () => {
 test("supports mixture of single and multi-character delimiters", () => {
   expect(add("//[--][+]\n1--2+3")).toBe(6);
 });
+
+test("supports multiple custom delimiters of any length", () => {
+  expect(add("//[***][%%]\n1***2%%3")).toBe(6);
+  expect(add("//[##][@@@]\n4##5@@@6")).toBe(15);
+  expect(add("//[|||][!][???]\n1|||2!3???4")).toBe(10);
+});
