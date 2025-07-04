@@ -56,8 +56,9 @@ test("custom delimiter :", () => {
   expect(add("//:\n10:20:30")).toBe(60);
 });
 
-test("custom delimiter -", () => {
-  expect(add("//-\n5-5-5-5")).toBe(20);
+//then it takes only first character not whole string
+test("declare another use another character", () => {
+  expect(add("//*\n5-5-5-5")).toBe(5);
 });
 
 test("for negative numbers throw error", () => {

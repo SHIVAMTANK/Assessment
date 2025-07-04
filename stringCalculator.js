@@ -18,8 +18,9 @@ function add(number) {
     const newLineIndex = number.indexOf("\n");
     const customDelimiterString = number.substring(2, newLineIndex);
 
-    // escape special regex characters
+    //all special characters in the custom delimiter should be escaped
     const escapedDelimiter = customDelimiterString.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    
     delimiter = new RegExp(escapedDelimiter);
 
     number = number.substring(newLineIndex + 1);
